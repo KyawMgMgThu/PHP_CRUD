@@ -11,7 +11,7 @@
 <body class="p-5">
     <div class="p-5 bg-danger-subtle shadow row">
         <h3 class="text-center pb-4">Click Button</h3>
-        <a href="./categories/" type="button" class="btn btn-warning col-md-4">Categories</a>
+        <a href="./categories/index.php" type="button" class="btn btn-warning col-md-4">Categories</a>
         <a href="./project/index.php" type="button" class="btn btn-info col-md-4 offset-md-4">Products</a>
     </div>
 </body>

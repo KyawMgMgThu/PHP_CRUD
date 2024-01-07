@@ -10,20 +10,25 @@ class ProductController extends DB
         $products = $statement->fetchAll(PDO::FETCH_OBJ);
         return $products;
     }
+    public function create()
+    {
+        return $this->pdo->query("select * from categories");
+    }
+
     public function store($request)
     {
         try {
             $statement = $this->pdo->prepare("
                 insert into products
-                    (name,description,price,stock,category,created_at,updated_at)
+                    (name,description,price,stock,category_id,created_at,updated_at)
                 values
-                    (:name,:description,:price,:stock,:category,now(),now());
+                    (:name,:description,:price,:stock,:category_id,now(),now());
             ");
             $statement->bindParam(":name", $request["name"]);
             $statement->bindParam(":description", $request["description"]);
             $statement->bindParam(":price", $request["price"]);
             $statement->bindParam(":stock", $request["stock"]);
-            $statement->bindParam(":category", $request["category"]);
+            $statement->bindParam(":category_id", $request["category_id"]);
 
             if ($statement->execute()) {
                 header("Location: http://localhost:8000/project/index.php");
@@ -57,7 +62,7 @@ class ProductController extends DB
             $statement = $this->pdo->prepare("
                UPDATE products 
                SET 
-               `name` = :name, `price` = :price, `stock` = :stock, `description` = :description, `category` = :category
+               `name` = :name, `price` = :price, `stock` = :stock, `description` = :description, `category_id` = :category_id
                WHERE id = :id
             ");
 
@@ -65,7 +70,7 @@ class ProductController extends DB
             $statement->bindParam("name", $request["name"]);
             $statement->bindParam("price", $request["price"]);
             $statement->bindParam("stock", $request["stock"]);
-            $statement->bindParam("category", $request["category"]);
+            $statement->bindParam("category_id", $request["category_id"]);
             $statement->bindParam("description", $request["description"]);
             if ($statement->execute()) {
                 header("Location: http://localhost:8000/project/index.php");

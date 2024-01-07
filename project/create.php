@@ -1,3 +1,8 @@
+<?php
+require_once "../controller/ProductController.php";
+$controller = new ProductController();
+$categories = $controller->create();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +32,12 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Category</label>
-                <input required type="text" name="category" class="form-control shadow-sm">
+                <select required name="category" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>Open this select menu</option>
+                    <?php foreach ($categories as $category) : ?>
+                        <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="col-md-12">
                 <label class="form-label">description</label>

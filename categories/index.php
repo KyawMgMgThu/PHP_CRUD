@@ -1,8 +1,8 @@
 <?php
-require_once "../controller/ProductController.php";
+require_once "../controller/CategoriesController.php";
 
-$controller = new ProductController();
-$products = $controller->index();
+$controller = new CategoriesController();
+$categories = $controller->index();
 ?>
 
 <!DOCTYPE html>
@@ -27,29 +27,17 @@ $products = $controller->index();
         <table class="table table-striped table-dark fs-3 p-3">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">NAME</th>
-                    <th scope="col">DESCRIPTION</th>
-                    <th scope="col">PRICE</th>
-                    <th scope="col">STOCK</th>
-                    <th scope="col">CATEGORY</th>
-                    <th scope="col"></th>
+                    <th scope="col">CATEGORY NAME</th>
+                    <th></th>
                 </tr>
             </thead>
-            <?php foreach ($products as $product) : ?>
+            <?php foreach ($categories as $category) : ?>
                 <tbody>
                     <tr>
-                        <th scope="row"><?php echo $product->id; ?></th>
-                        <td><?php echo $product->name; ?></td>
-                        <td><?php echo $product->description; ?></td>
-                        <td><?php echo $product->price; ?></td>
-                        <td><?php echo $product->stock; ?></td>
-                        <td><?php echo $product->category; ?></td>
-                        <td class="d-none"><?php echo $product->created_at; ?></td>
-                        <td class="d-none"><?php echo $product->updated_at; ?></td>
+                        <td><?php echo $category->name; ?></td>
                         <td>
-                            <a href="edit.php?id=<?php echo $product->id; ?>" class="btn btn-danger">EDIT</a>
-                            <a href="destory.php?id=<?php echo $product->id; ?>" class="btn btn-primary">DELETE</a>
+                            <a href="edit.php?id=<?php echo $cateogory->id; ?>" class="btn btn-danger">EDIT</a>
+                            <a href="destory.php?id=<?php echo $category->id; ?>" class="btn btn-primary">DELETE</a>
                         </td>
                     </tr>
                 </tbody>
