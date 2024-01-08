@@ -12,7 +12,7 @@ class ProductController extends DB
     }
     public function create()
     {
-        return $this->pdo->query("select * from categories");
+        return $this->pdo->query("SELECT * FROM `categories`")->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function store($request)
@@ -47,7 +47,9 @@ class ProductController extends DB
             $statement->bindParam(":id", $id);
             if ($statement->execute()) {
                 $products = $statement->fetch(PDO::FETCH_OBJ);
-                return $products;
+                $categories = $this->pdo->query("SELECT * FROM `categories`")->fetchAll(PDO::FETCH_OBJ);
+                $result = ["products" => $products, "categories" => $categories];
+                return $result;
             } else {
                 throw new Exception("Error");
             }

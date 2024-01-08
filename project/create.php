@@ -32,8 +32,8 @@ $categories = $controller->create();
             </div>
             <div class="col-md-6">
                 <label class="form-label">Category</label>
-                <select required name="category" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Open this select menu</option>
+                <select required name="category_id" class="form-select form-select-lg mb-3 text-dark" aria-label=".form-select-lg example">
+                    <option value="" selected></option>
                     <?php foreach ($categories as $category) : ?>
                         <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
                     <?php endforeach; ?>

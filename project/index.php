@@ -44,7 +44,7 @@ $products = $controller->index();
                         <td><?php echo $product->description; ?></td>
                         <td><?php echo $product->price; ?></td>
                         <td><?php echo $product->stock; ?></td>
-                        <td><?php echo $product->category; ?></td>
+                        <td><?php echo $product->category_id; ?></td>
                         <td class="d-none"><?php echo $product->created_at; ?></td>
                         <td class="d-none"><?php echo $product->updated_at; ?></td>
                         <td>

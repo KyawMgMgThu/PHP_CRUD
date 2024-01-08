@@ -3,7 +3,9 @@ require_once "../controller/ProductController.php";
 
 $controller = new ProductController();
 
-$products = $controller->edit($_GET["id"]);
+$products = $controller->edit($_GET["id"])["products"];
+$categories = $controller->edit($_GET["id"])["categories"];
+
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +36,13 @@ $products = $controller->edit($_GET["id"]);
             </div>
             <div class="col-md-6">
                 <label class="form-label">Category</label>
-                <input required type="text" name="category" value="<?php echo $products->category; ?>" class="form-control shadow-sm">
+                <select required name="category_id" class="form-select form-select-lg mb-3 text-dark" aria-label=".form-select-lg example">
+                    <?php foreach ($categories as $category) : ?>
+                        <option value="<?php echo $category->id ?>" <?php if ($products->category_id == $category->id) {
+                                                                        echo "selected";
+                                                                    } ?>><?php echo $category->name ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="col-md-12">
                 <label class="form-label">description</label>
