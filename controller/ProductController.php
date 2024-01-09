@@ -1,14 +1,14 @@
 <?php
 
 require_once "../helper/database.php";
+require_once "../model/Product.php";
 
 class ProductController extends DB
 {
     public function index()
     {
-        $statement = $this->pdo->query("select * from products where deleted_at is null");
-        $products = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $products;
+        $products = new Products();
+        return $products->all();
     }
     public function create()
     {
