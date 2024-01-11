@@ -1,7 +1,7 @@
 <?php
 require_once "../controller/CategoriesController.php";
 
-$controller = new CategoriesController();
+$controller = new CategoryController();
 $categories = $controller->index();
 ?>
 

@@ -3,7 +3,7 @@ require_once "../controller/ProductController.php";
 
 $controller = new ProductController();
 
-$products = $controller->edit($_GET["id"])["products"];
+$products = $controller->edit($_GET["id"])["product"];
 $categories = $controller->edit($_GET["id"])["categories"];
 
 
